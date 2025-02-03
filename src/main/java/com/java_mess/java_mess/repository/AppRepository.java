@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.java_mess.java_mess.model.App;
 
 public interface AppRepository extends JpaRepository<App, String>{
-    App findByApiClientApp(String apiClientKey);
+    App findByApiClient(String apiClientKey);
     
 }
