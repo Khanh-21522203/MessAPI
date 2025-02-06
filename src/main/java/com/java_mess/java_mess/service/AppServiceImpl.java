@@ -15,6 +15,6 @@ public class AppServiceImpl implements AppService {
     @Override
     @Cacheable("getAppByClientKey")
     public App getAppByClientKey(String apiClientKey) {
-        return appRepository.findByApiClient(apiClientKey);
+        return appRepository.findByApiClientKey(apiClientKey);
     }
 }

@@ -7,6 +7,6 @@ import com.java_mess.java_mess.model.App;
 
 @Repository
 public interface AppRepository extends JpaRepository<App, String>{
-    App findByApiClient(String apiClientKey);
+    App findByApiClientKey(String apiClientKey);
     
 }

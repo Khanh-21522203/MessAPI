@@ -1,7 +1,18 @@
+buildscript {
+    //...
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+		classpath 'org.flywaydb:flyway-mysql:9.8.3'
+        classpath 'org.mariadb.jdbc:mariadb-java-client:3.0.6'
+    }
+}
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.2'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'org.flywaydb.flyway' version '9.19.4'
 }
 
 group = 'com.java_mess'
@@ -26,15 +37,26 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
-	implementation 'mysql:mysql-connector-java:8.0.33'
+	runtimeOnly 'com.mysql:mysql-connector-j:8.3.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis:3.2.0'
+	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.flywaydb:flyway-mysql'
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+
+flyway {
+    url = 'jdbc:mysql://localhost:3306/mess_baas'
+    user = 'root'
+    password = 'mysql'
+    locations = ['classpath:db/migration']
 }
 
 tasks.named('test') {
