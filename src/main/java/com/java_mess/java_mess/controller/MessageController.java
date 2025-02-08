@@ -49,5 +49,5 @@ public class MessageController extends BaseController {
 				.build());
 		return ResponseEntity.status(HttpStatus.OK).body(ListMessageResponse.builder().messages(messages).build());
 	}
-
+	
 }
