@@ -38,7 +38,7 @@ public class AppConfig implements WebMvcConfigurer{
     }
 
     @Bean
-    public FilterRegistrationBean<RateLimiterFilter> rateLimiterFilter(RedisTemplate redisTemplate) {
+    public FilterRegistrationBean<RateLimiterFilter> rateLimiterFilter(RedisTemplate<String, String> redisTemplate) {
         FilterRegistrationBean<RateLimiterFilter> registrationBean = new FilterRegistrationBean<>();
 
         registrationBean.setFilter(new RateLimiterFilter(redisTemplate));
